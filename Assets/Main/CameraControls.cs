@@ -28,7 +28,7 @@ public class CameraControls: MonoBehaviour {
 	void Update() {
 
 		if (Input.touchCount == 2) {
-			
+
 			touchZero = Input.GetTouch(0);
 			touchOne = Input.GetTouch(1);
 
