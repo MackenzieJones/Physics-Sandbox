@@ -28,7 +28,7 @@ public class CreateNew: MonoBehaviour {
 	void Start() {
 		loadedObjects = new List<GameObject>();
 		previewObject = Instantiate(uiShapes[0], previewObject.transform.position, Quaternion.identity, canvas.transform);
-
+		previewObject.transform.SetParent(gameObject.transform);
 		prevSize = 0;
 	}
 
@@ -94,6 +94,7 @@ public class CreateNew: MonoBehaviour {
 		mat2D.friction = 2;
 		newObject.GetComponent<Collider2D>().sharedMaterial = mat2D;
 
+		loadedObjects.Add(newObject);
 	}
 
 }
