@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,17 +18,16 @@ public class CreateNew: MonoBehaviour {
 	public GameObject previewObject; //Initialized in unity with dummy object for location
 	private GameObject newObject;
 	public Canvas canvas;
+	private MainDirector main;
 
 	private float minSize = 20;
 	private float maxSize = 300;
 
-	private List<GameObject> loadedObjects;
-
 	void Start() {
-		loadedObjects = new List<GameObject>();
 		previewObject = Instantiate(uiShapes[0], previewObject.transform.position, Quaternion.identity, canvas.transform);
 		previewObject.transform.SetParent(gameObject.transform);
 		prevSize = 0;
+		main = gameObject.GetComponent<MainDirector>();
 	}
 
 	void Update() {
@@ -94,7 +92,7 @@ public class CreateNew: MonoBehaviour {
 		mat2D.friction = 2;
 		newObject.GetComponent<Collider2D>().sharedMaterial = mat2D;
 
-		loadedObjects.Add(newObject);
+		main.addNewObject(newObject);
 	}
 
 }
