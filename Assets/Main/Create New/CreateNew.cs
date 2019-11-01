@@ -14,6 +14,7 @@ public class CreateNew: MonoBehaviour {
 	public GameObject[] uiShapes; //Initalized in unity
 	public GameObject[] realShapes; //Initalized in unity
 	public GameObject[] sliders; //Initalized in unity
+	public Text[] displayValue;
 
 	public GameObject previewObject; //Initialized in unity with dummy object for location
 	private GameObject newObject;
@@ -26,21 +27,21 @@ public class CreateNew: MonoBehaviour {
 	void Start() {
 		previewObject = Instantiate(uiShapes[0], previewObject.transform.position, Quaternion.identity, canvas.transform);
 		previewObject.transform.SetParent(gameObject.transform);
+		previewObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 		prevSize = 0;
-		main = gameObject.GetComponent<MainDirector>();
+		main = GameObject.FindGameObjectWithTag("Director").GetComponent<MainDirector>();
 	}
 
 	void Update() {
 		updateColour();
 		updateSize();
-		//TODO: add animation for bounce selection
-		//updateBounce(); 
-		//TODO: add graphic for mass change
-		//updateMass();
+		updateBounce();
+		updateMass();
 	}
 
 	private void updateSize() {
 		size = sliders[5].GetComponent<Slider>().value;
+		displayValue[5].text = (size * 100).ToString("0");
 		if (prevSize != size) {
 			previewObject.transform.localScale = new Vector3((size + minSize * 1 / maxSize) * (maxSize - minSize), (size + minSize * 1 / maxSize) * (maxSize - minSize), 1);
 		}
@@ -52,6 +53,9 @@ public class CreateNew: MonoBehaviour {
 		r = sliders[2].GetComponent<Slider>().value;
 		g = sliders[3].GetComponent<Slider>().value;
 		b = sliders[4].GetComponent<Slider>().value;
+		displayValue[2].text = (255 * r).ToString("0");
+		displayValue[3].text = (255 * g).ToString("0");
+		displayValue[4].text = (255 * b).ToString("0");
 
 		if (r + b + g != prevRGB) {
 			previewObject.GetComponent<SpriteRenderer>().color = new Color(r, g, b);
@@ -60,13 +64,18 @@ public class CreateNew: MonoBehaviour {
 		prevRGB = r + b + g;
 	}
 
+	private void updateMass() {
+		//TODO: add graphic for mass change
 
-	private void updateBounce() {
-		throw new NotImplementedException();
+		mass = sliders[0].GetComponent<Slider>().value * 100;
+		displayValue[0].text = mass.ToString("0");
 	}
 
-	private void updateMass() {
-		throw new NotImplementedException();
+	private void updateBounce() {
+		//TODO: add animation for bounce selection
+
+		bounciness = sliders[1].GetComponent<Slider>().value * 2f;
+		displayValue[1].text = (bounciness * 100).ToString("0");
 	}
 
 	public void pickShape(int shapeChoice) {
@@ -76,22 +85,21 @@ public class CreateNew: MonoBehaviour {
 		previewObject.GetComponent<SpriteRenderer>().color = new Color(r, g, b);
 		previewObject.transform.localScale = new Vector3((size + minSize * 1 / maxSize) * (maxSize - minSize), (size + minSize * 1 / maxSize) * (maxSize - minSize), 1);
 		previewObject.transform.SetParent(gameObject.transform);
+		previewObject.layer = 1;
 	}
 
 	public void spawnNewObject() {
-		GameObject newObject = Instantiate(realShapes[shapeIndex], new Vector3(0, 0, 0), Quaternion.identity);
-
+		newObject = Instantiate(realShapes[shapeIndex], new Vector3(0, 0, 0), Quaternion.identity);
 		newObject.transform.localScale = new Vector3(size * 2.7f, size * 2.7f, 1);
-
 		newObject.GetComponent<SpriteRenderer>().color = new Color(r, g, b);
-
-		newObject.GetComponent<Rigidbody2D>().mass = sliders[0].GetComponent<Slider>().value * 20;
-
+		newObject.GetComponent<Rigidbody2D>().mass = mass;
 		PhysicsMaterial2D mat2D = new PhysicsMaterial2D();
-		mat2D.bounciness = sliders[1].GetComponent<Slider>().value * 2f;
+		mat2D.bounciness = bounciness;
 		mat2D.friction = 2;
 		newObject.GetComponent<Collider2D>().sharedMaterial = mat2D;
-
+		if (!main) {
+			main = GameObject.FindGameObjectWithTag("Director").GetComponent<MainDirector>();
+		}
 		main.addNewObject(newObject);
 	}
 
