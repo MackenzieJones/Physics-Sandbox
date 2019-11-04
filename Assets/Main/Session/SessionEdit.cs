@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 public class SessionEdit : MonoBehaviour {
 
+	public Dropdown bgChoice;
+	public GameObject background;
+	public Sprite[] bgs;
+
 	private float width;
 	private float height;
 
@@ -35,6 +39,13 @@ public class SessionEdit : MonoBehaviour {
 		boundry.transform.localScale = new Vector3(boundryInitialSize.x * (1 + (sizes[0].value - initialWidth) * maxBoundrySize), boundryInitialSize.y * (1 + (sizes[1].value - initialHeight) * maxBoundrySize), 1); 
 	}
 
+	public void backgroundChange() {
+		if (bgChoice.options[bgChoice.value].text.Equals("Fruit")) {
+			background.GetComponent<SpriteRenderer>().sprite = bgs[0];
+			background.SetActive(true);
+		}
+	}
+
 	public void boundryChange() {
 		if (boundryToggle.isOn) {
 			//TODO: grey out everything under "boundry"
@@ -47,10 +58,8 @@ public class SessionEdit : MonoBehaviour {
 
 	public void roofChange() {
 		if (roofToggle.isOn) {
-			//TODO: grey out everything under "boundry"
 			roof.SetActive(true);
 		} else {
-			//TODO: restore colour to everything under "boundry"
 			roof.SetActive(false);
 		}
 	}

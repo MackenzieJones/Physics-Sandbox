@@ -81,6 +81,9 @@ public class CameraControls : MonoBehaviour {
 				}
 
 			}
+		} else {
+			firstTouch = true;
+			currMovement = 0;
 		}
 	}
 }
