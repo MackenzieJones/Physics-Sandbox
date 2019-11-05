@@ -40,10 +40,7 @@ public class SessionEdit : MonoBehaviour {
 	}
 
 	public void backgroundChange() {
-		if (bgChoice.options[bgChoice.value].text.Equals("Fruit")) {
-			background.GetComponent<SpriteRenderer>().sprite = bgs[0];
-			background.SetActive(true);
-		}
+		background.GetComponent<SpriteRenderer>().sprite = bgs[bgChoice.value];
 	}
 
 	public void boundryChange() {

@@ -1079,12 +1079,12 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Nothing
+      m_Image: {fileID: 0}
     - m_Text: Fruit
       m_Image: {fileID: 21300000, guid: e8ebdd07342b03f49b6ac33c7136f39e, type: 3}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    - m_Text: Kitten
+      m_Image: {fileID: 21300000, guid: 95d398e5689e6ef45a0d3b407414f31e, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5447,7 +5447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Fruit
+  m_Text: Nothing
 --- !u!222 &1149100503
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5472,7 +5472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1149227699
 Transform:
   m_ObjectHideFlags: 0
@@ -6095,7 +6095,9 @@ MonoBehaviour:
   bgChoice: {fileID: 210603478}
   background: {fileID: 1149227698}
   bgs:
+  - {fileID: 0}
   - {fileID: 21300000, guid: e8ebdd07342b03f49b6ac33c7136f39e, type: 3}
+  - {fileID: 21300000, guid: 95d398e5689e6ef45a0d3b407414f31e, type: 3}
   boundryToggle: {fileID: 481599366}
   roofToggle: {fileID: 1783498662}
   sizes:
