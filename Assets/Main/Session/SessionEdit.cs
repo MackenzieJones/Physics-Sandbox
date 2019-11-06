@@ -36,7 +36,7 @@ public class SessionEdit : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		boundry.transform.localScale = new Vector3(boundryInitialSize.x * (1 + (sizes[0].value - initialWidth) * maxBoundrySize), boundryInitialSize.y * (1 + (sizes[1].value - initialHeight) * maxBoundrySize), 1); 
+		boundry.transform.localScale = new Vector3(boundryInitialSize.x * (1 + (sizes[0].value - initialWidth) * maxBoundrySize), boundryInitialSize.y * (1 + (sizes[1].value - initialHeight) * maxBoundrySize), 1);
 	}
 
 	public void backgroundChange() {

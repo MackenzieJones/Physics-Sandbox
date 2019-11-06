@@ -39,9 +39,7 @@ public class CameraControls : MonoBehaviour {
 	}
 
 	void Update() {
-		if (director == null) {
-			director = GameObject.FindGameObjectWithTag("Director").GetComponent<MainDirector>();
-		}
+
 		if (!director.isPaused()) {
 			if (Input.touchCount == 1) {
 				t1 = Input.GetTouch(0);
@@ -85,5 +83,7 @@ public class CameraControls : MonoBehaviour {
 			firstTouch = true;
 			currMovement = 0;
 		}
+
 	}
+
 }

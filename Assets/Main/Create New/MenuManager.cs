@@ -2,7 +2,7 @@
 
 public class MenuManager : MonoBehaviour {
 
-	public GameObject toolsMenu; 
+	public GameObject toolsMenu;
 	public GameObject newObjectMenu; //Initialized in unity
 	public GameObject editSessionMenu; //Initialized in unity
 
