@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class CreateNew : MonoBehaviour {
+public class CreateNew: MonoBehaviour {
 
 	public float mass;
 	public float bounciness;
