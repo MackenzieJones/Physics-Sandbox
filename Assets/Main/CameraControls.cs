@@ -13,9 +13,6 @@ public class CameraControls : MonoBehaviour {
 	private Touch t1;
 	private Touch t2;
 
-	private float minMovement;
-	private float currMovement;
-
 	private Vector2 touchZeroPrevPos;
 	private Vector2 touchOnePrevPos;
 
@@ -34,7 +31,6 @@ public class CameraControls : MonoBehaviour {
 	public void Start() {
 		cam = gameObject.GetComponent<Camera>();
 		director = GameObject.FindGameObjectWithTag("Director").GetComponent<MainDirector>();
-		minMovement = 1;
 		firstTouch = true;
 	}
 
@@ -54,7 +50,6 @@ public class CameraControls : MonoBehaviour {
 
 			} else {
 				firstTouch = true;
-				currMovement = 0;
 			}
 
 			if (Input.touchCount >= 2) {
@@ -81,7 +76,6 @@ public class CameraControls : MonoBehaviour {
 			}
 		} else {
 			firstTouch = true;
-			currMovement = 0;
 		}
 
 	}

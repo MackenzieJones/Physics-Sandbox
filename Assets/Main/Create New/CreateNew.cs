@@ -99,6 +99,7 @@ public class CreateNew : MonoBehaviour {
 		if (!main) {
 			main = GameObject.FindGameObjectWithTag("Director").GetComponent<MainDirector>();
 		}
+
 		main.addNewObject(newObject);
 	}
 
