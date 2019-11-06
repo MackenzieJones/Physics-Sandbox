@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuOptions: MonoBehaviour {
+public class MenuOptions : MonoBehaviour {
 
 	void Start() {
 
