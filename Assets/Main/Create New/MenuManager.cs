@@ -5,6 +5,7 @@ public class MenuManager : MonoBehaviour {
 	public GameObject toolsMenu;
 	public GameObject newObjectMenu; //Initialized in unity
 	public GameObject editSessionMenu; //Initialized in unity
+	public GameObject selectionMenu;
 
 	private MainDirector director;
 	private bool menuLoaded;
@@ -66,6 +67,20 @@ public class MenuManager : MonoBehaviour {
 	public void unloadEditSessionMenu() {
 		menuLoaded = false;
 		editSessionMenu.SetActive(false);
+		director.setPaused(false);
+	}
+
+	public void loadSelectionMenu() {
+		if (!menuLoaded) {
+			menuLoaded = true;
+			selectionMenu.SetActive(true);
+			director.setPaused(true);
+		}
+	}
+
+	public void unloadSelectionMenu() {
+		menuLoaded = false;
+		selectionMenu.SetActive(false);
 		director.setPaused(false);
 	}
 }

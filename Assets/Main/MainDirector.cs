@@ -34,6 +34,16 @@ public class MainDirector : MonoBehaviour {
 		}
 	}
 
+	public bool anySelected() {
+		foreach (GameObject g in loadedObjects) {
+			if (g.GetComponent<ShapeObject>().selected) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public void addNewObject(GameObject newObject) {
 		loadedObjects.Add(newObject);
 	}
@@ -51,19 +61,24 @@ public class MainDirector : MonoBehaviour {
 	}
 
 	public void DeleteSelected() {
-		foreach (GameObject shape in loadedObjects) {
-			if (shape.GetComponent<ShapeObject>().selected) {
-				Destroy(shape);
-				loadedObjects.Remove(shape);
+		GameObject[] list = loadedObjects.ToArray();
+		
+		for (int i = 0; i < list.Length; i++) {
+			if (list[i].GetComponent<ShapeObject>().selected) {
+				loadedObjects.Remove(list[i]);
+				Destroy(list[i]);
 			}
 		}
 	}
 
 	public void DeleteAll() {
-		foreach (GameObject shape in loadedObjects) {
-			Destroy(shape);
-			loadedObjects.Remove(shape);
+		GameObject[] list = loadedObjects.ToArray();
+
+		for (int i = 0; i < list.Length; i++) {
+			Destroy(list[i]);
 		}
+
+		loadedObjects.Clear();
 	}
 
 	public bool isPaused() {
