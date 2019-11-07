@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8531170917886463020}
   - component: {fileID: -829913386955605579}
   - component: {fileID: 2415001417310775074}
+  - component: {fileID: 4373920578956005194}
   m_Layer: 0
   m_Name: Hexagon
   m_TagString: Untagged
@@ -134,3 +135,15 @@ PolygonCollider2D:
       - {x: 0.00000004371139, y: -0.5}
       - {x: 0.43301272, y: -0.24999996}
       - {x: 0.43301272, y: 0.24999996}
+--- !u!114 &4373920578956005194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467165005320662187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcabff95ddf2106498c1e6ff67b138d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
